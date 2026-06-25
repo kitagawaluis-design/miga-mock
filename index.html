@@ -1,111 +1,192 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miga Consultora — Projeto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#FBF6F2;--ivory:#FFFDFB;--ink:#2B2229;--mut:#8A7C82;--plum:#7A3B57;--rose:#C8607A;--terra:#C8755A;--sage:#8B9A6B;--gold:#C29B54;--line:#EEE4DD;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-.serif{font-family:'Playfair Display',serif}
-body{background:var(--cream);color:var(--ink)}
-.app{display:grid;grid-template-columns:248px 1fr 372px;height:880px}
-/* SIDEBAR */
-.side{background:linear-gradient(180deg,#fff,#FBF1EE);border-right:1px solid var(--line);padding:26px 22px;display:flex;flex-direction:column}
-.brand{display:flex;align-items:center;gap:11px;margin-bottom:34px}
-.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 3px 10px rgba(122,59,87,.18)}
-.brand .nm{font-family:'Playfair Display',serif;font-size:21px;color:var(--plum);font-weight:700;line-height:1}
-.brand .nm small{display:block;font-family:'Inter';font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-top:3px}
-.nav{display:flex;flex-direction:column;gap:5px}
-.nav a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;font-size:14px;color:var(--ink);font-weight:500;text-decoration:none}
-.nav a .i{width:22px;text-align:center;font-size:16px}
-.nav a.on{background:#fff;color:var(--plum);box-shadow:0 4px 14px rgba(122,59,87,.08);font-weight:600}
-.nav a.off{color:var(--mut)}
-.side .foot{margin-top:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;gap:10px;align-items:center}
-.side .foot img{width:34px;height:34px;border-radius:50%;object-fit:cover}
-.side .foot .t{font-size:12px;color:var(--mut)}.side .foot .t b{display:block;color:var(--ink);font-size:13px}
-/* MAIN */
-.main{padding:38px 44px;overflow:hidden}
-.kick{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:600}
-.h1{font-family:'Playfair Display',serif;font-size:46px;color:var(--plum);line-height:1.05;margin:8px 0 8px}
-.conf{font-size:13px;color:var(--mut);margin-bottom:26px}
-.conf b{color:var(--sage)}
-.palwrap{background:var(--ivory);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:22px}
-.palwrap h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-bottom:14px}
-.pal{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.pal .s{height:74px;border-radius:12px;border:1px solid rgba(0,0,0,.05);position:relative}
-.pal .s span{position:absolute;bottom:6px;left:8px;font-size:9px;color:rgba(255,255,255,.85);font-weight:500}
-.note{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--terra);border-radius:14px;padding:18px 20px;margin-bottom:24px}
-.note img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
-.note p{font-size:14px;color:var(--ink);line-height:1.55}.note p b{color:var(--plum)}
-.looks h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600;margin-bottom:14px}
-.lookrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.look{aspect-ratio:3/4;border-radius:14px;background:linear-gradient(160deg,#EADBR,#D8C3A0);border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px;font-size:12px;font-weight:500;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.3)}
-/* CHAT */
-.chat{background:linear-gradient(180deg,#FBF1EE,#fff);border-left:1px solid var(--line);display:flex;flex-direction:column;padding:24px 22px}
-.chat .ch-top{display:flex;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
-.chat .ch-top img{width:40px;height:40px;border-radius:50%;object-fit:cover}
-.chat .ch-top .nm{font-weight:600;font-size:15px}.chat .ch-top .nm small{display:block;font-size:11px;color:var(--sage);font-weight:500}
-.msgs{flex:1;display:flex;flex-direction:column;gap:14px}
-.mrow{display:flex;gap:9px}
-.mrow img{width:30px;height:30px;border-radius:50%;object-fit:cover;flex:none}
-.b{background:#fff;border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:12px 14px;font-size:13.5px;line-height:1.5;color:var(--ink);box-shadow:0 4px 14px rgba(122,59,87,.05)}
-.b b{color:var(--plum)}
-.me{margin-left:auto;background:var(--plum);color:#fff;border-radius:16px 16px 4px 16px;padding:12px 14px;font-size:13.5px;max-width:80%}
-.qa{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.qa span{background:#fff;border:1px solid var(--line);border-radius:20px;padding:8px 13px;font-size:12.5px;color:var(--plum);font-weight:500}
-.inbar{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:9px 12px;margin-top:16px}
-.inbar .cam{width:32px;height:32px;border-radius:50%;background:var(--terra);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
-.inbar .ph{flex:1;font-size:13px;color:var(--mut)}.inbar .mic{color:var(--plum);font-size:17px}
-</style></head>
+  :root{--cream:#FBF6F2;--ivory:#FFFDFB;--ink:#2B2229;--mut:#7A6B72;--plum:#7A3B57;--rose:#C8607A;--terra:#C8755A;--sage:#8B9A6B;--gold:#C29B54;--line:#EADFD9;--rose-soft:#F3DDE3;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Playfair Display',serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);font-weight:600}
+  .kicker{color:var(--gold);font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+  /* HERO */
+  .hero{background:radial-gradient(120% 120% at 80% 0%,var(--rose-soft) 0%,#fff 45%,#fff 100%);padding:66px 0 58px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:flex;gap:46px;align-items:center;flex-wrap:wrap}
+  .hero-txt{flex:1;min-width:330px}
+  .hero-img{flex:0 0 320px;position:relative}
+  .hero-img img{width:320px;height:400px;object-fit:cover;object-position:center top;border-radius:20px;box-shadow:0 24px 60px rgba(122,59,87,.22)}
+  .hero-img::after{content:"😜 a sua amiga estilista";position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12px;color:var(--plum);font-weight:600;box-shadow:0 6px 18px rgba(122,59,87,.12)}
+  .logo{font-family:'Playfair Display',serif;font-size:62px;font-weight:700;color:var(--plum);line-height:1;letter-spacing:-.02em}
+  .logo small{display:block;font-family:'Inter';font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-top:8px}
+  .hero p.lead{font-size:21px;color:var(--ink);max-width:540px;margin:20px 0 8px;font-weight:300}
+  .hero .sub{color:var(--mut);font-size:14.5px;max-width:520px}
+  .pills{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}
+  .pill{background:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:12.5px;color:var(--plum);font-weight:500}
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  h2.serif{font-size:33px;font-weight:700;color:var(--plum);margin:8px 0 6px}
+  .lead2{color:var(--mut);max-width:660px;margin-bottom:26px}
+  .grid{display:grid;gap:15px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--ivory);border:1px solid var(--line);border-radius:15px;padding:20px}
+  .card h3{font-size:15.5px;font-weight:600;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .card p{font-size:13px;color:var(--mut)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+  .stat .n{font-family:'Playfair Display',serif;font-size:34px;color:var(--plum);font-weight:700;line-height:1}
+  .stat .l{color:var(--mut);font-size:13px;margin-top:6px}
+  .formula{background:var(--plum);color:#fff;border-radius:16px;padding:26px 28px;text-align:center}
+  .formula .f{font-family:'Playfair Display',serif;font-size:23px;line-height:1.4}
+  .formula .f b{color:var(--rose-soft)}
+  .formula small{display:block;color:#E8C9D4;margin-top:10px;font-size:13px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 13px;font-size:12.5px}.chip b{color:var(--plum)}
+  .zones{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+  .zone{border-radius:15px;padding:20px;border:1px solid var(--line)}
+  .z1{background:#FBEFEA}.z2{background:#F7EFE3}.z3{background:#F3DDE3}
+  .zone h4{font-size:15px;font-weight:600;margin-bottom:6px}.zone p{font-size:12.5px;color:#6a5b62}
+  .speak{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+  .col{border-radius:15px;padding:20px}.do{background:#EEF6F0;border:1px solid #CDE6D5}.dont{background:#FBEEF0;border:1px solid #F2D2D8}
+  .col h3{font-size:15px;font-weight:600;margin-bottom:10px}.col ul{list-style:none}
+  .col li{font-size:12.5px;padding:4px 0 4px 20px;position:relative;color:#4a3f45}
+  .do li::before{content:"✓";position:absolute;left:0;color:#2F7D4F;font-weight:700}.dont li::before{content:"✕";position:absolute;left:0;color:#C0445A;font-weight:700}
+  .money{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.money .card{text-align:center}
+  .money .big{font-family:'Playfair Display',serif;font-size:26px;color:var(--rose);font-weight:700}
+  .diffs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .diff{display:flex;gap:10px;align-items:flex-start;font-size:13px}
+  .diff .i{flex:none;width:26px;height:26px;border-radius:7px;background:var(--rose-soft);color:var(--plum);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .swatches{display:flex;gap:9px;margin-top:6px}.sw{width:48px;height:48px;border-radius:9px;border:1px solid var(--line)}
+  .next{background:var(--plum);color:#fff;border-radius:16px;padding:34px}.next h2{color:#fff}
+  .next ol{margin:14px 0 0 18px}.next li{padding:6px 0;font-size:14px;color:#F3DDE3}.next li b{color:#fff}
+  footer{padding:30px 0;text-align:center;color:var(--mut);font-size:12px}
+  @media(max-width:760px){.g3,.g4,.g2,.zones,.speak,.diffs,.money,.stats{grid-template-columns:1fr}}
+</style>
+</head>
 <body>
-<div class="app">
-  <!-- SIDEBAR -->
-  <aside class="side">
-    <div class="brand"><img src="miga.jpg"><div class="nm">Miga<small>Consultora</small></div></div>
-    <nav class="nav">
-      <a class="off"><span class="i">⌂</span> Início</a>
-      <a class="on"><span class="i">🎨</span> Minhas cores</a>
-      <a class="off"><span class="i">👗</span> Meus looks</a>
-      <a class="off"><span class="i">🧥</span> Guarda-roupa</a>
-      <a class="off"><span class="i">✨</span> Situações</a>
-      <a class="off"><span class="i">🛍️</span> Vitrine</a>
-      <a class="off"><span class="i">☺</span> Meu perfil</a>
-    </nav>
-    <div class="foot"><img src="miga.jpg"><div class="t"><b>Ana Beatriz</b>Outono Suave · plano Miga+</div></div>
-  </aside>
-  <!-- MAIN -->
-  <main class="main">
-    <div class="kick">A sua paleta</div>
-    <div class="h1">Você é Outono Suave</div>
-    <div class="conf">✓ confiança <b>82%</b> &nbsp;·&nbsp; tons quentes, terrosos e suaves — que iluminam sua pele</div>
-    <div class="palwrap"><h3>12 cores que te valorizam</h3>
-      <div class="pal">
-        <div class="s" style="background:#8B8073"></div><div class="s" style="background:#C9BDA8"></div>
-        <div class="s" style="background:#6E6A5A"></div><div class="s" style="background:#EDE6D6"></div>
-        <div class="s" style="background:#C08552"><span>caramelo</span></div><div class="s" style="background:#9CAF88"><span>sálvia</span></div>
-        <div class="s" style="background:#B5896E"></div><div class="s" style="background:#A38B6E"></div>
-        <div class="s" style="background:#7E9E9E"></div><div class="s" style="background:#C98A78"><span>terracota</span></div>
-        <div class="s" style="background:#D8C3A0"></div><div class="s" style="background:#8E6E5A"><span>chocolate</span></div>
-      </div>
+
+<div class="hero"><div class="wrap hero-grid">
+  <div class="hero-txt">
+    <span class="tag">Projeto · App + Marca</span>
+    <div class="logo serif">Miga<small>Consultora</small></div>
+    <p class="lead serif">Sua amiga estilista por IA — com rosto, voz e memória. Ela te conhece e te salva todo dia.</p>
+    <p class="sub">Analisa suas cores, conversa, monta seus looks, te mostra vestida, lembra de você e organiza sua vida de estilo. O que custa R$ 450 a R$ 2.000 com uma consultora, por uma assinatura.</p>
+    <div class="pills">
+      <span class="pill">Coloração & estilo</span><span class="pill">Conversa humana</span>
+      <span class="pill">Avatar de IA</span><span class="pill">Quase uma agenda</span><span class="pill">Foco feminino</span>
     </div>
-    <div class="note"><img src="miga.jpg"><p><b>Por que essas, miga?</b> Seu subtom dourado + traços suaves pedem terra e oliva. O <b>preto puro</b> endurece teu rosto — troca por marrom-chocolate e olha tua pele iluminar 💛</p></div>
-    <div class="looks"><h3>Looks na sua paleta</h3>
-      <div class="lookrow">
-        <div class="look" style="background:linear-gradient(160deg,#C08552,#8E6E5A)">Trabalho</div>
-        <div class="look" style="background:linear-gradient(160deg,#9CAF88,#7E9E9E)">Casual</div>
-        <div class="look" style="background:linear-gradient(160deg,#C98A78,#A38B6E)">Encontro</div>
-        <div class="look" style="background:linear-gradient(160deg,#8B8073,#6E6A5A)">Evento</div>
-      </div>
-    </div>
-  </main>
-  <!-- CHAT -->
-  <aside class="chat">
-    <div class="ch-top"><img src="miga.jpg"><div class="nm">Miga<small>● online · sua consultora</small></div></div>
-    <div class="msgs">
-      <div class="mrow"><img src="miga.jpg"><div class="b">Amiga, descobri suas cores! Você é <b>Outono Suave</b> — e ficou lindo 💛</div></div>
-      <div class="me">Adorei!! E pro casamento de sábado?</div>
-      <div class="mrow"><img src="miga.jpg"><div class="b">Ahh vamos arrasar 😍 É de dia ou de noite? Já penso num <b>terracota</b> que é a tua cara…</div></div>
-      <div class="qa"><span>É de noite</span><span>Não sei o código</span><span>Me surpreende</span></div>
-    </div>
-    <div class="inbar"><span class="cam">📷</span><span class="ph">Fala comigo, miga…</span><span class="mic">🎙️</span></div>
-  </aside>
-</div>
+  </div>
+  <div class="hero-img"><img src="miga.jpg" alt="Miga"></div>
+</div></div>
+
+<section><div class="wrap">
+  <span class="tag">A ideia</span>
+  <h2 class="serif">Não é tabela de cores. É relacionamento.</h2>
+  <p class="lead2">Os apps de hoje te dão a "estação" e largam você na mão — o ChatGPT faz isso de graça. A Miga é diferente: ela te conhece, age antes de você pedir, monta o look, mostra em você e te dá o link pra comprar. Como uma amiga que entende de moda de verdade.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">R$450–2.000</div><div class="l">o que custa uma consultoria hoje (nossa âncora de valor)</div></div>
+    <div class="stat"><div class="n">104 mi</div><div class="l">mulheres no Brasil · #coloranalysis = bilhões de views</div></div>
+    <div class="stat"><div class="n">~centavos</div><div class="l">custo de rodar o núcleo — margem de software puro</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">A personagem</span>
+  <h2 class="serif">A Miga é moleca, estilosa e confiável</h2>
+  <p class="lead2">Um avatar de IA consistente — a mesma pessoa no conteúdo e no app. 100% nossa: não depende de influencer, modelo nem de ninguém. Mulher brasileira real, com atitude.</p>
+  <div class="grid g3">
+    <div class="card"><h3>😜 Moleca, com alma</h3><p>Sorriso atrevido, mecha caramelo, piercing. A amiga que ri com você — não modelo séria.</p></div>
+    <div class="card"><h3>👩🏽 Corpo real</h3><p>Mulher de verdade, relatable. Ela prega "valorize seu corpo" — e pratica.</p></div>
+    <div class="card"><h3>🧣 Look-assinatura</h3><p>Terracota + creme + lenço sage + correntes. Reconhecível em todo post.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">Por que ninguém troca a Miga pelo ChatGPT</span>
+  <h2 class="serif">A fórmula do moat</h2>
+  <div class="formula" style="margin:6px 0 22px">
+    <div class="f"><b>Memória + Proatividade + Ferramentas + Integração com a vida + Expertise + Vínculo</b></div>
+    <small>= a diferença gigante. O ChatGPT tem zero disso.</small>
+  </div>
+  <p class="lead2">É quase uma <b>agenda</b>: ela lembra do casamento de sábado, monta o look, avisa quando a peça na sua cor entra em promoção, monta sua mala de viagem, e diz "devo comprar isso?" antes de você gastar errado. Quando some, dói — como perder uma secretária.</p>
+  <div class="grid g4">
+    <div class="card"><h3>🌤️ O que visto hoje?</h3><p>Sugestão diária (clima + agenda + armário).</p></div>
+    <div class="card"><h3>👗 Guarda-roupa digital</h3><p>Sabe tudo que você tem; monta com o que existe.</p></div>
+    <div class="card"><h3>🛒 Devo comprar isso?</h3><p>Foto na loja → combina? já tem parecida?</p></div>
+    <div class="card"><h3>🧳 Montadora de mala</h3><p>Viagem? Ela monta os looks pra você.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">O cérebro · embasamento real</span>
+  <h2 class="serif">Conhecedora do universo feminino, dos pés à cabeça</h2>
+  <p class="lead2">14 skills pesquisadas e ancoradas — ela sabe FUNDO, não raso (o raso o ChatGPT já faz). E nunca inventa.</p>
+  <div class="chips">
+    <span class="chip">🎨 <b>Coloração</b></span><span class="chip">👤 <b>Visagismo</b></span><span class="chip">📐 <b>Corpo</b></span>
+    <span class="chip">✨ <b>Estilo/arquétipos</b></span><span class="chip">🧩 <b>Combinação</b></span><span class="chip">📅 <b>Ocasião</b></span>
+    <span class="chip">💄 <b>Maquiagem</b></span><span class="chip">🧴 <b>Skincare</b></span><span class="chip">💇‍♀️ <b>Cabelo</b></span>
+    <span class="chip">🌸 <b>Perfumaria</b></span><span class="chip">👜 <b>Acessórios</b></span><span class="chip">🩷 <b>Íntimo</b></span>
+    <span class="chip">💛 <b>Acolhimento</b></span><span class="chip">🧠 <b>Universo feminino</b></span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">O espaço visual</span>
+  <h2 class="serif">Studio 🎬 — algo pra cada humor</h2>
+  <p class="lead2">A casa premium do mágico visual. Eleva o app de "chat" pra "experiência" — e é onde mora o gancho do plano pago.</p>
+  <div class="zones">
+    <div class="zone z1"><h4>🎯 Sério / útil</h4><p>Foto profissional (LinkedIn na sua paleta) · provador (try-on) · sua paleta visual.</p></div>
+    <div class="zone z2"><h4>✨ Glamour</h4><p>Máquina de selfie (sua melhor versão) · ensaio de revista de você.</p></div>
+    <div class="zone z3"><h4>😜 Diversão</h4><p>Zoeira que viraliza: boneco, anime, "como eu seria em…" — rotativos com a moda.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">Como ela fala</span>
+  <h2 class="serif">Humana no calor, séria no conteúdo</h2>
+  <div class="speak">
+    <div class="col do"><h3>A Miga faz</h3><ul>
+      <li>Foca na roupa, nunca no corpo</li><li>Começa pelo elogio, explica o porquê</li>
+      <li>Lembra do que você contou</li><li>Decisão é sempre sua</li><li>Fala como gente ("miga sua loka")</li></ul></div>
+    <div class="col dont"><h3>A Miga nunca</h3><ul>
+      <li>Critica seu corpo ou fala de peso</li><li>Dá conselho de dieta</li>
+      <li>Banca a terapeuta (acolhe e indica ajuda)</li><li>Inventa — se não sabe, admite</li><li>Toma partido político</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">Como ganha dinheiro</span>
+  <h2 class="serif">Três fontes de renda</h2>
+  <div class="money" style="margin-top:18px">
+    <div class="card"><div class="big">R$ 40/mês</div><h3 style="justify-content:center;margin-top:6px">Assinatura</h3><p>A Miga consultora, sempre disponível.</p></div>
+    <div class="card"><div class="big">5–15%</div><h3 style="justify-content:center;margin-top:6px">Afiliados</h3><p>Comissão por venda. Sem estoque, sem risco.</p></div>
+    <div class="card"><div class="big">Studio+</div><h3 style="justify-content:center;margin-top:6px">Premium</h3><p>O mágico visual no plano pago.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="tag">A marca · fundamentada</span>
+  <h2 class="serif">Editorial Cálido</h2>
+  <p class="lead2">Paleta quente e sofisticada (confiança + feminilidade adulta). Serifada eleva confiança ~40%, par com sans acolhedora. "Miga": curto, afetivo. Numerologia: 3 = comunicação.</p>
+  <div class="swatches">
+    <div class="sw" style="background:#FBF6F2"></div><div class="sw" style="background:#C8755A"></div>
+    <div class="sw" style="background:#8B9A6B"></div><div class="sw" style="background:#7A3B57"></div>
+    <div class="sw" style="background:#C8607A"></div><div class="sw" style="background:#C29B54"></div>
+  </div>
+</div></section>
+
+<section style="border:none"><div class="wrap">
+  <div class="next">
+    <span class="tag" style="color:var(--rose-soft)">Onde está agora</span>
+    <h2 class="serif">Cérebro pronto. Agora, fazer funcionar.</h2>
+    <ol>
+      <li><b>Cérebro (14 skills) + avatar + memória + arquitetura</b> — construídos.</li>
+      <li><b>Próximo:</b> desenhar a engenharia do sistema (como tudo conecta) + dar voz à Miga.</li>
+      <li><b>Validar a retenção</b> com mulheres reais (a demanda já está provada).</li>
+      <li><b>Construir o app</b> (web/PWA) + o motor proativo — a agenda.</li>
+    </ol>
+  </div>
+</div></section>
+
+<footer>Miga Consultora · sua amiga estilista por IA · documento do projeto · 25/06/2026</footer>
 </body></html>
