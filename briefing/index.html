@@ -3,374 +3,237 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Miga · Briefing (protótipo)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Miga · Briefing (protótipo v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --cream:#FBF6F2; --ink:#3A2A25; --soft:#8A726A;
-  --terra:#C8755A; --plum:#7A3B57; --rose:#C8607A; --gold:#C29B54; --sage:#8B9A6B;
-  --line:#EBDFD6;
-}
+:root{--cream:#FBF6F2;--ink:#3A2A25;--soft:#8A726A;--terra:#C8755A;--plum:#7A3B57;--rose:#C8607A;--gold:#C29B54;--sage:#8B9A6B;--line:#EBDFD6}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{background:#E9E2DC;font-family:Inter,sans-serif;color:var(--ink);
-  display:flex;align-items:center;justify-content:center;min-height:100vh;padding:18px}
-.phone{width:390px;max-width:96vw;height:min(844px,94vh);background:var(--cream);
-  border-radius:42px;box-shadow:0 30px 80px rgba(80,40,30,.30),0 0 0 10px #15110f,0 0 0 12px #2a211d;
-  position:relative;overflow:hidden;display:flex;flex-direction:column}
-.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:26px;
-  background:#15110f;border-radius:0 0 16px 16px;z-index:30}
-/* progress */
-.bar{position:absolute;top:14px;left:26px;right:26px;height:4px;background:var(--line);border-radius:99px;z-index:20}
-.bar > i{display:block;height:100%;width:0;background:var(--terra);border-radius:99px;transition:width .4s ease}
-/* screen */
-.screen{position:absolute;inset:0;padding:54px 28px 30px;display:none;flex-direction:column;
-  animation:fade .45s ease}
+body{background:#E9E2DC;font-family:Inter,sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:18px}
+.phone{width:390px;max-width:96vw;height:min(844px,94vh);background:var(--cream);border-radius:42px;box-shadow:0 30px 80px rgba(80,40,30,.30),0 0 0 10px #15110f,0 0 0 12px #2a211d;position:relative;overflow:hidden}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:26px;background:#15110f;border-radius:0 0 16px 16px;z-index:40}
+.bar{position:absolute;top:14px;left:26px;right:26px;height:4px;background:var(--line);border-radius:99px;z-index:30}
+.bar>i{display:block;height:100%;width:0;background:var(--terra);border-radius:99px;transition:width .4s}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;}
 .screen.on{display:flex}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.pad{padding:54px 28px 30px}
 .spacer{flex:1}
-.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:14px}
-h1{font-family:'Playfair Display',serif;font-weight:700;font-size:30px;line-height:1.15;color:var(--ink)}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:12px}
+h1{font-family:'Playfair Display',serif;font-weight:700;font-size:29px;line-height:1.15}
 h1 .ac{color:var(--terra);font-style:italic}
-p.sub{font-size:15.5px;line-height:1.5;color:var(--soft);margin-top:14px}
-.miga{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:50% 22%;
-  align-self:center;box-shadow:0 14px 34px rgba(120,60,45,.28);border:5px solid #fff}
-.miga.big{width:230px;height:300px;border-radius:30px;object-position:50% 18%}
-.bubble{background:#fff;border:1px solid var(--line);border-radius:20px 20px 20px 6px;
-  padding:16px 18px;font-size:16px;line-height:1.45;box-shadow:0 8px 22px rgba(120,80,60,.10);margin-top:22px}
-.bubble b{color:var(--terra)}
-/* options */
-.opts{display:flex;flex-direction:column;gap:11px;margin-top:24px}
-.opt{border:1.6px solid var(--line);background:#fff;border-radius:16px;padding:15px 18px;
-  font-size:15.5px;font-weight:500;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:12px}
-.opt:hover{border-color:var(--terra)}
-.opt.sel{border-color:var(--terra);background:#FBEDE6}
-.opt .em{font-size:19px}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.chip{border:1.6px solid var(--line);background:#fff;border-radius:99px;padding:11px 18px;font-size:15px;font-weight:500;cursor:pointer;transition:.15s}
-.chip:hover,.chip.sel{border-color:var(--terra);background:#FBEDE6;color:var(--terra)}
-input.txt{width:100%;border:none;border-bottom:2px solid var(--line);background:transparent;
-  font-family:'Playfair Display',serif;font-size:26px;padding:10px 2px;color:var(--ink);margin-top:26px}
-input.txt:focus{outline:none;border-color:var(--terra)}
-/* button */
-.btn{background:var(--terra);color:#fff;border:none;border-radius:99px;padding:17px;font-size:16px;
-  font-weight:600;font-family:Inter;cursor:pointer;width:100%;box-shadow:0 10px 24px rgba(200,117,90,.34);transition:.15s}
+p.sub{font-size:15px;line-height:1.5;color:var(--soft);margin-top:12px}
+.btn{background:var(--terra);color:#fff;border:none;border-radius:99px;padding:17px;font-size:16px;font-weight:600;cursor:pointer;width:100%;box-shadow:0 10px 24px rgba(200,117,90,.34)}
 .btn:active{transform:scale(.985)}
 .btn.ghost{background:transparent;color:var(--soft);box-shadow:none;font-weight:500;padding:10px}
-.footer{margin-top:16px}
-/* swatches */
-.swatches{display:flex;gap:9px;margin-top:22px;flex-wrap:wrap}
-.sw{width:48px;height:48px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.08)}
-.selfie{flex:1;border:2px dashed var(--terra);border-radius:24px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:10px;margin-top:22px;color:var(--terra);background:#FCF0EA}
-.selfie .cam{font-size:46px}
-.toggles{display:flex;flex-direction:column;gap:8px;margin-top:16px}
-.tg{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--line);
-  border-radius:14px;padding:12px 16px;font-size:14px;color:var(--soft)}
-.tg span.q{color:var(--ink);font-weight:500}
-/* heart screen */
-#s_heart{background:var(--plum);justify-content:center;align-items:center;text-align:center;overflow:hidden}
-#s_heart .htitle{color:#fff;font-family:'Playfair Display',serif;font-size:24px;z-index:5}
-#s_heart .hsub{color:#F4DCE6;font-size:14px;margin-top:10px;z-index:5}
-#heartWrap{position:relative;width:170px;height:170px;margin:26px 0;z-index:5;display:flex;align-items:center;justify-content:center}
-#heartSvg{width:120px;height:120px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.3));transition:transform .08s}
-#heartFill{position:absolute;inset:0;left:50%;top:50%;width:40px;height:40px;background:#E8233D;border-radius:50%;
-  transform:translate(-50%,-50%) scale(0);z-index:1;pointer-events:none}
-.holdtxt{color:#fff;font-size:13px;letter-spacing:.04em;opacity:.85;z-index:5;margin-top:6px}
-.pledge{position:absolute;z-index:6;color:#fff;font-family:'Playfair Display',serif;font-style:italic;
-  font-size:22px;opacity:0;transition:opacity .3s;text-align:center;padding:0 30px;pointer-events:none}
-.dupla{position:absolute;inset:0;background:#E8233D;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:8;color:#fff;text-align:center;padding:30px}
+.opts{display:flex;flex-direction:column;gap:11px;margin-top:22px}
+.opt{border:1.6px solid var(--line);background:#fff;border-radius:16px;padding:15px 18px;font-size:15.5px;font-weight:500;cursor:pointer;transition:.15s;display:flex;gap:12px;align-items:center}
+.opt:hover{border-color:var(--terra)}.opt.sel{border-color:var(--terra);background:#FBEDE6}
+.opt .em{font-size:19px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{border:1.6px solid var(--line);background:#fff;border-radius:99px;padding:11px 18px;font-size:15px;font-weight:500;cursor:pointer;transition:.15s}
+.chip:hover,.chip.sel{border-color:var(--terra);background:#FBEDE6;color:var(--terra)}
+input.txt{width:100%;border:none;border-bottom:2px solid var(--line);background:transparent;font-family:'Playfair Display',serif;font-size:26px;padding:10px 2px;color:var(--ink);margin-top:24px}
+input.txt:focus{outline:none;border-color:var(--terra)}
+.selfie{flex:1;border:2px dashed var(--terra);border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-top:18px;color:var(--terra);background:#FCF0EA}
+.selfie .cam{font-size:44px}
+.toggles{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.tg{display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 15px;font-size:13.5px;color:var(--soft)}
+.tg .q{color:var(--ink);font-weight:500}
+/* ---- TELAS COM A MIGA INTEIRA (integrada, sem moldura) ---- */
+.fs{position:absolute;inset:0;overflow:hidden}
+.blob{position:absolute;bottom:-8%;left:50%;transform:translateX(-50%);width:130%;height:64%;z-index:1;border-radius:50%;filter:blur(6px)}
+.fig{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:64%;z-index:2;filter:drop-shadow(0 12px 24px rgba(90,50,35,.22))}
+.fstext{position:absolute;top:50px;left:28px;right:28px;z-index:5}
+.fstext h1{font-size:27px}
+.linha{background:rgba(255,255,255,.78);backdrop-filter:blur(4px);border-radius:18px;padding:14px 16px;font-size:15.5px;line-height:1.4;box-shadow:0 6px 18px rgba(120,80,60,.10)}
+.linha b{color:var(--terra)}
+.fsbtn{position:absolute;bottom:28px;left:28px;right:28px;z-index:6}
+.sw{display:inline-block;width:34px;height:34px;border-radius:9px;margin-right:6px;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+/* heart */
+#heartFill{position:absolute;left:50%;top:54%;width:42px;height:42px;background:#E8233D;border-radius:50%;transform:translate(-50%,-50%) scale(0);z-index:4}
+#tapHeart{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;width:150px;height:150px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+#tapHeart svg{width:96px;height:96px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.3));transition:transform .08s}
+.holdtxt{position:absolute;bottom:96px;left:0;right:0;text-align:center;color:#fff;font-size:13px;z-index:7;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.pledge{position:absolute;top:46px;left:0;right:0;text-align:center;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:21px;z-index:7;opacity:0;transition:opacity .3s;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.dupla{position:absolute;inset:0;background:#E8233D;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:9;color:#fff;text-align:center;padding:30px}
 .dupla h1{color:#fff}
-small.note{position:absolute;bottom:8px;left:0;right:0;text-align:center;color:#B9A89F;font-size:10px;letter-spacing:.05em}
-</style>
-</head>
+small.note{position:absolute;bottom:7px;left:0;right:0;text-align:center;color:#B9A89F;font-size:10px;letter-spacing:.04em;z-index:35}
+</style></head>
 <body>
 <div class="phone">
-  <div class="notch"></div>
-  <div class="bar"><i id="prog"></i></div>
+  <div class="notch"></div><div class="bar"><i id="prog"></i></div>
 
   <!-- 0 SPLASH -->
-  <section class="screen on" data-s="0">
-    <div class="spacer"></div>
-    <img class="miga big" src="assets/m_bemvinda.jpg" alt="Miga">
-    <h1 style="text-align:center;margin-top:24px">Miga</h1>
-    <p class="sub" style="text-align:center">Sua consultora de imagem pessoal.<br>Descubra suas cores em 2 minutos — de graça.</p>
-    <div class="spacer"></div>
-    <div class="footer"><button class="btn" onclick="go(1)">Bora começar 💛</button>
-      <p style="text-align:center;font-size:12px;color:var(--soft);margin-top:12px">★★★★★ &nbsp;primeira turma de mulheres descobrindo seu estilo</p></div>
+  <section class="screen on fs" data-s="0">
+    <div class="blob" style="background:radial-gradient(closest-side,#C8755A99,transparent)"></div>
+    <img class="fig" src="fig/f_bemvinda.png">
+    <div class="fstext" style="text-align:center">
+      <h1 style="font-size:42px">Miga</h1>
+      <p class="sub">Sua consultora de imagem pessoal.<br>Suas cores em 2 minutos, de graça.</p>
+    </div>
+    <div class="fsbtn"><button class="btn" onclick="go(1)">Bora começar 💛</button>
+      <p style="text-align:center;font-size:11px;color:#fff;margin-top:8px;text-shadow:0 1px 3px rgba(0,0,0,.3)">★★★★★ primeira turma de mulheres</p></div>
   </section>
 
   <!-- 1 PROMESSA -->
-  <section class="screen" data-s="1">
-    <div class="spacer"></div>
+  <section class="screen pad" data-s="1"><div class="spacer"></div>
     <div class="kicker">o trato</div>
     <h1>Em 2 minutos, suas <span class="ac">cores</span>. E uma amiga que entende de você.</h1>
     <p class="sub">Sem formulário chato. A gente conversa, e eu já começo a te conhecer.</p>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(2)">Quero descobrir</button>
+    <div class="spacer"></div><button class="btn" onclick="go(2)">Quero descobrir</button>
   </section>
 
   <!-- 2 NOME -->
-  <section class="screen" data-s="2">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 1</div>
-    <h1>Como posso te chamar?</h1>
+  <section class="screen pad" data-s="2"><div class="spacer"></div>
+    <div class="kicker">pergunta 1</div><h1>Como posso te chamar?</h1>
     <input class="txt" id="nome" placeholder="seu nome" autocomplete="off" oninput="setNome(this.value)">
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(3)">Continuar</button>
+    <div class="spacer"></div><button class="btn" onclick="go(3)">Continuar</button>
   </section>
 
-  <!-- 3 ENCONTRO -->
-  <section class="screen" data-s="3">
-    <div class="spacer"></div>
-    <img class="miga" src="assets/m_bemvinda.jpg" alt="Miga acenando">
-    <div class="bubble">Seja bem-vinda, <b class="js-nome">amiga</b>! 💛 Eu sou a <b>Miga</b>. Vou te conhecer dos pés à cabeça — pra você nunca mais travar na frente do armário. Bora?</div>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(4)">Bora, Miga!</button>
+  <!-- 3 ENCONTRO (miga inteira) -->
+  <section class="screen fs" data-s="3">
+    <div class="blob" style="background:radial-gradient(closest-side,#C8607A88,transparent)"></div>
+    <img class="fig" src="fig/f_bemvinda.png">
+    <div class="fstext"><div class="linha">Seja bem-vinda, <b class="js-nome">amiga</b>! 💛 Eu sou a <b>Miga</b>. Vou te conhecer dos pés à cabeça — pra você nunca mais travar na frente do armário.</div></div>
+    <div class="fsbtn"><button class="btn" onclick="go(4)">Bora, Miga!</button></div>
   </section>
 
   <!-- 4 IDADE -->
-  <section class="screen" data-s="4">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 2</div>
-    <h1>Qual a sua idade?</h1>
-    <div class="chips">
-      <div class="chip" onclick="pick(this);go(5)">18–24</div>
-      <div class="chip" onclick="pick(this);go(5)">25–34</div>
-      <div class="chip" onclick="pick(this);go(5)">35–44</div>
-      <div class="chip" onclick="pick(this);go(5)">45–54</div>
-      <div class="chip" onclick="pick(this);go(5)">55+</div>
-    </div>
+  <section class="screen pad" data-s="4"><div class="spacer"></div>
+    <div class="kicker">pergunta 2</div><h1>Qual a sua idade?</h1>
+    <div class="chips"><div class="chip" onclick="pick(this);go(5)">18–24</div><div class="chip" onclick="pick(this);go(5)">25–34</div><div class="chip" onclick="pick(this);go(5)">35–44</div><div class="chip" onclick="pick(this);go(5)">45–54</div><div class="chip" onclick="pick(this);go(5)">55+</div></div>
     <div class="spacer"></div>
   </section>
 
   <!-- 5 PROFISSAO -->
-  <section class="screen" data-s="5">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 3</div>
-    <h1>Qual a sua profissão?</h1>
-    <p class="sub">(me ajuda a entender como você se veste no dia a dia)</p>
-    <div class="opts">
-      <div class="opt" onclick="pick(this);go(6)"><span class="em">💼</span>Trabalho fora</div>
-      <div class="opt" onclick="pick(this);go(6)"><span class="em">🏠</span>Em casa / autônoma</div>
-      <div class="opt" onclick="pick(this);go(6)"><span class="em">🚀</span>Empreendo</div>
-      <div class="opt" onclick="pick(this);go(6)"><span class="em">📚</span>Estudo</div>
-    </div>
+  <section class="screen pad" data-s="5"><div class="spacer"></div>
+    <div class="kicker">pergunta 3</div><h1>Qual a sua profissão?</h1>
+    <p class="sub">(me ajuda a entender teu dia a dia)</p>
+    <div class="opts"><div class="opt" onclick="pick(this);go(6)"><span class="em">💼</span>Trabalho fora</div><div class="opt" onclick="pick(this);go(6)"><span class="em">🏠</span>Em casa / autônoma</div><div class="opt" onclick="pick(this);go(6)"><span class="em">🚀</span>Empreendo</div><div class="opt" onclick="pick(this);go(6)"><span class="em">📚</span>Estudo</div></div>
     <div class="spacer"></div>
   </section>
 
   <!-- 6 OBJETIVO -->
-  <section class="screen" data-s="6">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 4</div>
-    <h1>O que te trouxe até mim?</h1>
-    <div class="opts">
-      <div class="opt" onclick="pick(this,true)"><span class="em">✨</span>Mais confiança</div>
-      <div class="opt" onclick="pick(this,true)"><span class="em">👗</span>Resolver o "não sei o que vestir"</div>
-      <div class="opt" onclick="pick(this,true)"><span class="em">🦋</span>Me redescobrir</div>
-      <div class="opt" onclick="pick(this,true)"><span class="em">🥂</span>Arrasar num evento</div>
-    </div>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(7)">Continuar</button>
+  <section class="screen pad" data-s="6"><div class="spacer"></div>
+    <div class="kicker">pergunta 4</div><h1>O que te trouxe até mim?</h1>
+    <div class="opts"><div class="opt" onclick="pick(this,1)"><span class="em">✨</span>Mais confiança</div><div class="opt" onclick="pick(this,1)"><span class="em">👗</span>Resolver o "não sei o que vestir"</div><div class="opt" onclick="pick(this,1)"><span class="em">🦋</span>Me redescobrir</div><div class="opt" onclick="pick(this,1)"><span class="em">🥂</span>Arrasar num evento</div></div>
+    <div class="spacer"></div><button class="btn" onclick="go(7)">Continuar</button>
   </section>
 
   <!-- 7 EMOCIONAL -->
-  <section class="screen" data-s="7">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 5</div>
-    <h1>Como você se sente com a sua imagem hoje?</h1>
-    <div class="opts">
-      <div class="opt" onclick="pick(this);go(8)">Super bem, só quero afinar</div>
-      <div class="opt" onclick="pick(this);go(8)">Uns dias bem, outros não</div>
-      <div class="opt" onclick="pick(this);go(8)">Meio perdida</div>
-      <div class="opt" onclick="pick(this);go(8)">Insegura, quero mudar isso</div>
-    </div>
+  <section class="screen pad" data-s="7"><div class="spacer"></div>
+    <div class="kicker">pergunta 5</div><h1>Como você se sente com a sua imagem hoje?</h1>
+    <div class="opts"><div class="opt" onclick="pick(this);go(8)">Super bem, só quero afinar</div><div class="opt" onclick="pick(this);go(8)">Uns dias bem, outros não</div><div class="opt" onclick="pick(this);go(8)">Meio perdida</div><div class="opt" onclick="pick(this);go(8)">Insegura, quero mudar isso</div></div>
     <div class="spacer"></div>
   </section>
 
-  <!-- 8 TRANSICAO -->
-  <section class="screen" data-s="8">
-    <div class="spacer"></div>
-    <img class="miga" src="assets/m_tever.jpg" alt="Miga">
-    <div class="bubble">Já tô começando a te entender, <b class="js-nome">amiga</b> 💛. Agora deixa eu <b>te ver</b> — manda uma selfie?</div>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(9)">Deixa eu te ver!</button>
+  <!-- 8 TRANSICAO (miga celular) -->
+  <section class="screen fs" data-s="8">
+    <div class="blob" style="background:radial-gradient(closest-side,#C29B5488,transparent)"></div>
+    <img class="fig" src="fig/f_tever.png">
+    <div class="fstext"><div class="linha">Já tô começando a te entender, <b class="js-nome">amiga</b> 💛. Agora deixa eu <b>te ver</b> — manda uma selfie?</div></div>
+    <div class="fsbtn"><button class="btn" onclick="go(9)">Deixa eu te ver!</button></div>
   </section>
 
   <!-- 9 SELFIE -->
-  <section class="screen" data-s="9">
-    <div class="kicker" style="margin-top:8px">pergunta 6 · a selfie</div>
-    <h1>Uma selfie com luz natural 🤳</h1>
+  <section class="screen pad" data-s="9" style="padding-top:48px">
+    <div class="kicker">pergunta 6 · a selfie</div><h1>Uma selfie com luz natural 🤳</h1>
     <div class="selfie"><div class="cam">📸</div><div>toque para tirar / enviar</div></div>
-    <div class="toggles">
-      <div class="tg"><span class="q">Cabelo natural ou pintado?</span> natural ▾</div>
-      <div class="tg"><span class="q">Costuma se bronzear?</span> às vezes ▾</div>
-      <div class="tg"><span class="q">Usa óculos de grau?</span> não ▾</div>
-    </div>
-    <button class="btn" style="margin-top:16px" onclick="go(10)">Analisar minhas cores</button>
+    <div class="toggles"><div class="tg"><span class="q">Cabelo natural ou pintado?</span> natural ▾</div><div class="tg"><span class="q">Costuma se bronzear?</span> às vezes ▾</div><div class="tg"><span class="q">Usa óculos de grau?</span> não ▾</div></div>
+    <button class="btn" style="margin-top:14px" onclick="go(10)">Analisar minhas cores</button>
   </section>
 
-  <!-- 10 PALETA -->
-  <section class="screen" data-s="10">
-    <div class="spacer"></div>
-    <img class="miga" src="assets/m_paleta.jpg" alt="Miga apresentando">
-    <div class="bubble">Pronto, <b class="js-nome">amiga</b>! Você é <b>Outono Suave</b> 🍂. Essas cores acendem teu rosto:</div>
-    <div class="swatches">
-      <div class="sw" style="background:#C8755A"></div><div class="sw" style="background:#8B9A6B"></div>
-      <div class="sw" style="background:#C29B54"></div><div class="sw" style="background:#7A3B57"></div>
-      <div class="sw" style="background:#A8694B"></div><div class="sw" style="background:#6E7A52"></div>
+  <!-- 10 PALETA (miga pink + swatches) -->
+  <section class="screen fs" data-s="10">
+    <div class="blob" style="background:radial-gradient(closest-side,#C8755A99,transparent)"></div>
+    <img class="fig" src="fig/f_paleta.png">
+    <div class="fstext">
+      <div class="linha">Pronto, <b class="js-nome">amiga</b>! Você é <b>Outono Suave</b> 🍂. Essas cores acendem teu rosto:</div>
+      <div style="margin-top:12px;text-align:center">
+        <span class="sw" style="background:#C8755A"></span><span class="sw" style="background:#8B9A6B"></span><span class="sw" style="background:#C29B54"></span><span class="sw" style="background:#7A3B57"></span><span class="sw" style="background:#A8694B"></span></div>
     </div>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(11)">Amei, e agora?</button>
+    <div class="fsbtn"><button class="btn" onclick="go(11)">Amei, e agora?</button></div>
   </section>
 
-  <!-- 11 CORES AMA -->
-  <section class="screen" data-s="11">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 7</div>
-    <h1>Tem uma cor que você <span class="ac">ama</span>? E alguma que não curte?</h1>
-    <p class="sub">Pode ser que você ame uma que não te favorece — aí a gente acha o meio-termo juntas. 😉</p>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(12)">Continuar</button>
+  <!-- 11 CORES -->
+  <section class="screen pad" data-s="11"><div class="spacer"></div>
+    <div class="kicker">pergunta 7</div><h1>Tem uma cor que você <span class="ac">ama</span>? E alguma que não curte?</h1>
+    <p class="sub">Pode ser que ame uma que não te favorece — aí a gente acha o meio-termo juntas. 😉</p>
+    <div class="spacer"></div><button class="btn" onclick="go(12)">Continuar</button>
   </section>
 
   <!-- 12 CARA -->
-  <section class="screen" data-s="12">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 8</div>
-    <h1>Qual dessas é mais a <span class="ac">tua cara</span>?</h1>
-    <div class="opts">
-      <div class="opt" onclick="pick(this);go(13)">🤍 Clássica &amp; atemporal</div>
-      <div class="opt" onclick="pick(this);go(13)">🌹 Romântica &amp; suave</div>
-      <div class="opt" onclick="pick(this);go(13)">🌿 Natural &amp; sem esforço</div>
-      <div class="opt" onclick="pick(this);go(13)">⚡ Dramática &amp; marcante</div>
-    </div>
+  <section class="screen pad" data-s="12"><div class="spacer"></div>
+    <div class="kicker">pergunta 8</div><h1>Qual dessas é mais a <span class="ac">tua cara</span>?</h1>
+    <div class="opts"><div class="opt" onclick="pick(this);go(13)">🤍 Clássica &amp; atemporal</div><div class="opt" onclick="pick(this);go(13)">🌹 Romântica &amp; suave</div><div class="opt" onclick="pick(this);go(13)">🌿 Natural &amp; sem esforço</div><div class="opt" onclick="pick(this);go(13)">⚡ Dramática &amp; marcante</div></div>
     <div class="spacer"></div>
   </section>
 
   <!-- 13 TRANSMITIR -->
-  <section class="screen" data-s="13">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 9</div>
-    <h1>O que você quer que sintam quando te veem?</h1>
-    <div class="chips">
-      <div class="chip" onclick="pick(this);go(14)">Autoridade</div>
-      <div class="chip" onclick="pick(this);go(14)">Leveza</div>
-      <div class="chip" onclick="pick(this);go(14)">Charme</div>
-      <div class="chip" onclick="pick(this);go(14)">Criatividade</div>
-    </div>
+  <section class="screen pad" data-s="13"><div class="spacer"></div>
+    <div class="kicker">pergunta 9</div><h1>O que você quer que sintam quando te veem?</h1>
+    <div class="chips"><div class="chip" onclick="pick(this);go(14)">Autoridade</div><div class="chip" onclick="pick(this);go(14)">Leveza</div><div class="chip" onclick="pick(this);go(14)">Charme</div><div class="chip" onclick="pick(this);go(14)">Criatividade</div></div>
     <div class="spacer"></div>
   </section>
 
-  <!-- 14 MEMORIA -->
-  <section class="screen" data-s="14">
-    <div class="spacer"></div>
-    <img class="miga" src="assets/m_confidente.jpg" alt="Miga confidente">
-    <div class="bubble">Tudo isso eu <b>guardo</b>, viu? 💾 Da próxima vez eu já sei quem você é — não começo do zero igual as outras IAs.</div>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(15)">Que linda 🥹</button>
+  <!-- 14 MEMORIA (miga mostarda) -->
+  <section class="screen fs" data-s="14">
+    <div class="blob" style="background:radial-gradient(closest-side,#7A3B5788,transparent)"></div>
+    <img class="fig" src="fig/f_confidente.png">
+    <div class="fstext"><div class="linha">Tudo isso eu <b>guardo</b>, viu? 💾 Da próxima vez já sei quem você é — não começo do zero igual as outras IAs.</div></div>
+    <div class="fsbtn"><button class="btn" onclick="go(15)">Que linda 🥹</button></div>
   </section>
 
   <!-- 15 PERSONA -->
-  <section class="screen" data-s="15">
-    <div class="spacer"></div>
-    <div class="kicker">pergunta 10</div>
-    <h1>Como você quer que eu fale com você?</h1>
-    <div class="opts">
-      <div class="opt" onclick="pick(this);go(16)"><span class="em">💅</span>Doce e zoeira</div>
-      <div class="opt" onclick="pick(this);go(16)"><span class="em">🎩</span>Elegante e refinada</div>
-      <div class="opt" onclick="pick(this);go(16)"><span class="em">🎯</span>Direta, sem rodeio</div>
-    </div>
+  <section class="screen pad" data-s="15"><div class="spacer"></div>
+    <div class="kicker">pergunta 10</div><h1>Como você quer que eu fale com você?</h1>
+    <div class="opts"><div class="opt" onclick="pick(this);go(16)"><span class="em">💅</span>Doce e zoeira</div><div class="opt" onclick="pick(this);go(16)"><span class="em">🎩</span>Elegante e refinada</div><div class="opt" onclick="pick(this);go(16)"><span class="em">🎯</span>Direta, sem rodeio</div></div>
     <div class="spacer"></div>
   </section>
 
-  <!-- 16 COMPROMISSO -->
-  <section class="screen" id="s_heart" data-s="16">
-    <div class="htitle">Bora, <span class="js-nome">amiga</span>?</div>
-    <div class="hsub">Segura o coração comigo 💛</div>
-    <div id="heartWrap">
-      <div id="heartFill"></div>
-      <svg id="heartSvg" viewBox="0 0 32 29" fill="none"><path d="M16 28S2 19 2 9.5C2 4.8 5.8 1 10.5 1 13 1 15.2 2.3 16 4.2 16.8 2.3 19 1 21.5 1 26.2 1 30 4.8 30 9.5 30 19 16 28 16 28Z" stroke="#fff" stroke-width="2" fill="rgba(255,255,255,.08)"/></svg>
-    </div>
-    <div class="holdtxt" id="holdtxt">segure firme…</div>
+  <!-- 16 COMPROMISSO (miga coração + segurar) -->
+  <section class="screen fs" id="s_heart" data-s="16" style="background:var(--plum)">
+    <div class="blob" style="background:radial-gradient(closest-side,#C8607A,transparent)"></div>
+    <img class="fig" src="fig/f_coracao.png" id="figHeart">
     <div class="pledge" id="pledge">"Bora me vestir<br>como quem eu sou."</div>
-    <div class="dupla" id="dupla">
-      <div style="font-size:60px">❤️</div>
-      <h1>Agora a gente é dupla.</h1>
-      <p class="sub" style="color:#FCE3E9">Bora, <span class="js-nome">amiga</span>! 💛</p>
-      <button class="btn" style="background:#fff;color:#E8233D;margin-top:24px;box-shadow:none" onclick="go(17)">Entrar na Miga</button>
-    </div>
+    <div id="heartFill"></div>
+    <div id="tapHeart"><svg viewBox="0 0 32 29" id="heartSvg"><path d="M16 28S2 19 2 9.5C2 4.8 5.8 1 10.5 1 13 1 15.2 2.3 16 4.2 16.8 2.3 19 1 21.5 1 26.2 1 30 4.8 30 9.5 30 19 16 28 16 28Z" stroke="#fff" stroke-width="2" fill="rgba(255,255,255,.12)"/></svg></div>
+    <div class="holdtxt" id="holdtxt">segura o coração comigo 💛</div>
+    <div class="dupla" id="dupla"><div style="font-size:60px">❤️</div><h1>Agora a gente é dupla.</h1><p class="sub" style="color:#FCE3E9">Bora, <span class="js-nome">amiga</span>! 💛</p><button class="btn" style="background:#fff;color:#E8233D;box-shadow:none;margin-top:22px" onclick="go(17)">Entrar na Miga</button></div>
   </section>
 
   <!-- 17 FINAL -->
-  <section class="screen" data-s="17">
-    <div class="spacer"></div>
-    <div style="font-size:54px;text-align:center">🎉</div>
-    <h1 style="text-align:center;margin-top:10px">Teu perfil de estilo<br>tá montado!</h1>
-    <p class="sub" style="text-align:center">Paleta + estilo + a Miga te conhecendo. Tudo guardado. Bora pro teu primeiro look?</p>
-    <div class="spacer"></div>
-    <button class="btn" onclick="go(0)">Começar 7 dias grátis</button>
+  <section class="screen pad" data-s="17"><div class="spacer"></div>
+    <div style="font-size:52px;text-align:center">🎉</div>
+    <h1 style="text-align:center;margin-top:8px">Teu perfil de estilo<br>tá montado!</h1>
+    <p class="sub" style="text-align:center">Paleta + estilo + a Miga te conhecendo. Tudo guardado.</p>
+    <div class="spacer"></div><button class="btn" onclick="go(0)">Começar 7 dias grátis</button>
     <button class="btn ghost" onclick="go(0)">↺ ver de novo</button>
   </section>
 
-  <small class="note">PROTÓTIPO · GO!GO! · toque pra avançar</small>
+  <small class="note">PROTÓTIPO · GO!GO!</small>
 </div>
-
 <script>
 let cur=0; const TOTAL=17;
-function render(){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', +s.dataset.s===cur));
-  document.getElementById('prog').style.width = Math.min(100,(cur/TOTAL)*100)+'%';
-  if(cur===16) resetHeart();
-}
-function go(n){cur=n; render(); window.scrollTo(0,0);}
+function render(){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',+s.dataset.s===cur));
+  document.getElementById('prog').style.width=Math.min(100,(cur/TOTAL)*100)+'%'; if(cur===16)resetHeart();}
+function go(n){cur=n;render();}
 function setNome(v){document.querySelectorAll('.js-nome').forEach(e=>e.textContent=(v||'amiga').trim()||'amiga');}
-function pick(el,multi){ if(!multi){[...el.parentElement.children].forEach(c=>c.classList.remove('sel'));} el.classList.toggle('sel'); }
-
-/* ----- coração segurar pra encher ----- */
-let hp=0, htimer=null, done=false;
-const fill=()=>document.getElementById('heartFill');
-const svg=()=>document.getElementById('heartSvg');
-function resetHeart(){hp=0;done=false;clearInterval(htimer);
-  fill().style.transform='translate(-50%,-50%) scale(0)';
-  svg().style.transform='scale(1)';
-  document.getElementById('pledge').style.opacity=0;
-  document.getElementById('dupla').style.display='none';
-  document.getElementById('s_heart').style.background='var(--plum)';
-  document.getElementById('holdtxt').textContent='segure firme…';}
-function hold(){ if(done)return; clearInterval(htimer);
-  htimer=setInterval(()=>{ hp+=2.2; if(hp>100)hp=100;
-    let sc=hp/100*16;               // 0 -> cobre a tela
-    fill().style.transform='translate(-50%,-50%) scale('+sc+')';
-    svg().style.transform='scale('+(1+hp/100*0.5)+')';
-    document.getElementById('pledge').style.opacity=Math.min(1,hp/60);
-    document.getElementById('holdtxt').textContent = hp<100?'segure firme…':'';
-    if(hp>=100){ done=true; clearInterval(htimer); success(); }
-  },24);
-}
-function release(){ if(done)return; clearInterval(htimer);
-  if(hp<100){ const back=setInterval(()=>{ hp-=6; if(hp<=0){hp=0;clearInterval(back);
-      document.getElementById('holdtxt').textContent='ó, segura firme 😏';}
-    let sc=hp/100*16;
-    fill().style.transform='translate(-50%,-50%) scale('+sc+')';
-    svg().style.transform='scale('+(1+hp/100*0.5)+')';
-    document.getElementById('pledge').style.opacity=Math.min(1,hp/60);
-  },24); }
-}
-function success(){ document.getElementById('s_heart').style.background='#E8233D';
-  setTimeout(()=>{ document.getElementById('dupla').style.display='flex'; },260); }
-const hw=()=>document.getElementById('heartWrap');
-window.addEventListener('load',()=>{
-  const w=hw();
-  ['mousedown','touchstart'].forEach(e=>w.addEventListener(e,ev=>{ev.preventDefault();hold();},{passive:false}));
-  ['mouseup','mouseleave','touchend'].forEach(e=>w.addEventListener(e,release));
-  // suporte a ?s=N pra screenshot
-  const q=new URLSearchParams(location.search); if(q.has('s')){cur=+q.get('s');}
-  if(q.has('nome'))setNome(q.get('nome'));
-  render();
-});
+function pick(el,multi){if(!multi)[...el.parentElement.children].forEach(c=>c.classList.remove('sel'));el.classList.toggle('sel');}
+let hp=0,ht=null,done=false;
+const $=id=>document.getElementById(id);
+function resetHeart(){hp=0;done=false;clearInterval(ht);$('heartFill').style.transform='translate(-50%,-50%) scale(0)';$('heartSvg').style.transform='scale(1)';$('pledge').style.opacity=0;$('dupla').style.display='none';$('s_heart').style.background='var(--plum)';$('holdtxt').textContent='segura o coração comigo 💛';$('figHeart').style.opacity=1;}
+function hold(){if(done)return;clearInterval(ht);ht=setInterval(()=>{hp+=2.4;if(hp>100)hp=100;
+  $('heartFill').style.transform='translate(-50%,-50%) scale('+(hp/100*22)+')';
+  $('heartSvg').style.transform='scale('+(1+hp/100*0.45)+')';
+  $('pledge').style.opacity=Math.min(1,hp/55);$('figHeart').style.opacity=Math.max(.15,1-hp/120);
+  $('holdtxt').textContent=hp<100?'segura firme…':'';
+  if(hp>=100){done=true;clearInterval(ht);$('s_heart').style.background='#E8233D';setTimeout(()=>$('dupla').style.display='flex',260);}},24);}
+function release(){if(done)return;clearInterval(ht);const b=setInterval(()=>{hp-=6;if(hp<=0){hp=0;clearInterval(b);$('holdtxt').textContent='ó, segura firme 😏';}
+  $('heartFill').style.transform='translate(-50%,-50%) scale('+(hp/100*22)+')';$('heartSvg').style.transform='scale('+(1+hp/100*0.45)+')';$('pledge').style.opacity=Math.min(1,hp/55);$('figHeart').style.opacity=Math.max(.15,1-hp/120);},24);}
+window.addEventListener('load',()=>{const w=$('tapHeart');['mousedown','touchstart'].forEach(e=>w.addEventListener(e,ev=>{ev.preventDefault();hold();},{passive:false}));['mouseup','mouseleave','touchend'].forEach(e=>w.addEventListener(e,release));
+  const q=new URLSearchParams(location.search);if(q.has('s'))cur=+q.get('s');if(q.has('nome'))setNome(q.get('nome'));render();});
 </script>
-</body>
-</html>
+</body></html>
