@@ -26,7 +26,7 @@ body{font-family:Inter,sans-serif;color:var(--ink);-webkit-font-smoothing:antial
 /* panes */
 .pane{flex:1;display:flex;flex-direction:column;justify-content:center;padding:84px 72px}
 .visual{position:relative;overflow:hidden}
-.fig{position:absolute;bottom:0;height:104%;left:50%;transform:translateX(-50%);filter:drop-shadow(0 18px 40px rgba(120,60,45,.28))}
+.fig{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .blob{position:absolute;border-radius:50%;filter:blur(8px)}
 ul.ticks{list-style:none;margin-top:8px}
 ul.ticks li{font-size:19px;line-height:1.4;color:#4a3a33;padding:11px 0 11px 30px;position:relative;border-bottom:1px solid var(--line)}
@@ -73,7 +73,7 @@ ul.ticks li b{font-weight:600;color:var(--ink)}
     <p class="lead" style="margin-top:22px;max-width:500px">"Não sei o que vestir." "Será que essa cor me cai bem?" "Tenho um casamento e nada pra usar." É uma carga mental diária — e cara de resolver.</p>
   </div>
   <div class="visual" style="flex:.9;background:var(--plum)">
-    <div class="statgrid">
+    <div class="statgrid" style="grid-template-columns:1fr">
       <div class="statcell" style="border-bottom:1px solid #ffffff22"><div class="n" style="color:#fff">R$450<span style="font-size:40px">–2.000</span></div><div class="l" style="color:#F4DCE6">por sessão de consultoria de imagem presencial. Fora do alcance da maioria.</div></div>
       <div class="statcell"><div class="n" style="color:#F6C9A6">1 em 3</div><div class="l" style="color:#F4DCE6">brasileiras se acham "fora do padrão". A imagem vira ansiedade, não prazer.</div></div>
     </div>
@@ -88,7 +88,7 @@ ul.ticks li b{font-weight:600;color:var(--ink)}
   <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-top:30px;flex:1">
     <div class="statcell" style="padding:30px 28px 70px 0;border-right:1px solid var(--line)"><div class="n" style="color:var(--terra)">104M</div><div class="l">mulheres no Brasil — mercado B2C gigante.</div></div>
     <div class="statcell" style="padding:30px 28px 70px 34px;border-right:1px solid var(--line)"><div class="n" style="color:var(--plum)">Bilhões</div><div class="l">de views em #coloranalysis e consultoria de imagem.</div></div>
-    <div class="statcell" style="padding:30px 28px 70px 34px;border-right:1px solid var(--line)"><div class="n" style="color:var(--sage)">+20-40<span style="font-size:38px">%</span></div><div class="l">de crescimento ao ano do mercado de beleza/imagem.</div></div>
+    <div class="statcell" style="padding:30px 28px 70px 34px;border-right:1px solid var(--line)"><div class="n" style="color:var(--sage);font-size:54px;white-space:nowrap">+20–40<span style="font-size:30px">%</span></div><div class="l">de crescimento ao ano do mercado de beleza/imagem.</div></div>
     <div class="statcell" style="padding:30px 0 70px 34px"><div class="n" style="color:var(--gold)">US$2,5<span style="font-size:38px">mi</span></div><div class="l">a Lu do Magalu (avatar BR) já fatura por ano. Avatar funciona no BR.</div></div>
   </div>
   <div class="brandmark">Miga</div><div class="pageno">03</div>
@@ -176,11 +176,10 @@ ul.ticks li b{font-weight:600;color:var(--ink)}
   <div class="pane" style="flex:1.1">
     <div class="kicker">Crescimento</div><hr class="rule">
     <div class="title" style="font-size:44px;max-width:500px">A própria Miga é o <i>canal</i>.</div>
-    <ul class="ticks" style="margin-top:18px;max-width:560px">
-      <li><b>O avatar posta:</b> IG/TikTok/Pinterest próprios — corrige um erro de estilo com humor e funila pro app.</li>
-      <li><b>Comenta → DM:</b> "comenta a palavra X" → vira cliente. Orgânico e escalável.</li>
-      <li><b>Indicação amiga-traz-amiga:</b> 89% das mulheres confiam na amiga, não na marca.</li>
-      <li><b>Boca a boca conquistado:</b> gente fala porque é bom. Qualidade É o marketing.</li>
+    <ul class="ticks" style="margin-top:18px;max-width:540px">
+      <li><b>O avatar posta:</b> corrige um erro de estilo com humor e funila pro app.</li>
+      <li><b>Comenta → DM:</b> vira cliente. Orgânico e escalável.</li>
+      <li><b>Indicação amiga-traz-amiga:</b> o canal de maior confiança da mulher.</li>
     </ul>
   </div>
   <div class="visual" style="flex:.6;background:var(--sage)">
