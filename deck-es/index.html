@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Miga · Presentación</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page{ size:1280px 720px; margin:0 }
+:root{
+  --cream:#FBF6F2; --ink:#3A2A25; --soft:#8A726A; --line:#E8DBD1;
+  --terra:#C8755A; --plum:#7A3B57; --sage:#8B9A6B; --rose:#C8607A; --gold:#C29B54; --brown:#8A5A44;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.slide{width:1280px;height:720px;background:var(--cream);position:relative;overflow:hidden;page-break-after:always;display:flex}
+.slide:last-child{page-break-after:auto}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:.34em;text-transform:uppercase;color:var(--terra);font-weight:500}
+.hero{font-family:'Playfair Display',serif;font-weight:900;line-height:.96;letter-spacing:-.01em}
+.title{font-family:'Playfair Display',serif;font-weight:700;line-height:1.06}
+.title i,.hero i{font-style:italic}
+.lead{font-size:23px;line-height:1.5;color:#5a463d;font-weight:300}
+.body{font-size:19px;line-height:1.55;color:#5a463d;font-weight:300}
+.num{font-family:'Playfair Display',serif;font-weight:800;line-height:.9}
+.rule{height:2px;width:64px;background:var(--terra);border:none;margin:22px 0}
+.soft{color:var(--soft)}
+.pageno{position:absolute;bottom:34px;right:48px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--soft);letter-spacing:.1em}
+.brandmark{position:absolute;bottom:34px;left:48px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--soft);letter-spacing:.18em;text-transform:uppercase}
+.pane{flex:1;display:flex;flex-direction:column;justify-content:center;padding:84px 72px}
+.visual{position:relative;overflow:hidden}
+.fig{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.blob{position:absolute;border-radius:50%;filter:blur(8px)}
+ul.ticks{list-style:none;margin-top:8px}
+ul.ticks li{font-size:19px;line-height:1.4;color:#4a3a33;padding:11px 0 11px 30px;position:relative;border-bottom:1px solid var(--line)}
+ul.ticks li:last-child{border-bottom:none}
+ul.ticks li::before{content:"";position:absolute;left:0;top:19px;width:9px;height:9px;border-radius:50%;background:var(--terra)}
+ul.ticks li b{font-weight:600;color:var(--ink)}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;height:100%}
+.statcell{display:flex;flex-direction:column;justify-content:center;padding:40px 56px}
+.statcell .n{font-family:'Playfair Display',serif;font-weight:800;font-size:74px;line-height:.9}
+.statcell .l{font-size:16px;line-height:1.45;color:#5a463d;margin-top:12px;font-weight:300}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 32px;box-shadow:0 10px 30px rgba(120,80,60,.08)}
+.card h3{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;margin-bottom:8px}
+.card p{font-size:16px;line-height:1.5;color:#5a463d;font-weight:300}
+.tela{height:430px;border-radius:22px;box-shadow:0 18px 40px rgba(90,50,35,.22)}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 16px;margin:5px 6px 0 0;letter-spacing:.04em;color:var(--ink)}
+.formula{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:34px;line-height:1.45;color:#fff}
+.formula b{color:#F6C9A6;font-style:normal}
+.flowstep{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 20px;margin-bottom:11px;font-size:17px;color:#4a3a33}
+.flowstep .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--terra);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+</style></head>
+<body>
+
+<!-- 1 · PORTADA -->
+<div class="slide" style="background:linear-gradient(115deg,#F7E8E0 0%,#FBF6F2 52%)">
+  <div class="pane" style="flex:1.15">
+    <div class="kicker">Dossier de Presentación</div>
+    <hr class="rule">
+    <div class="hero" style="font-size:108px;margin-top:8px">Miga</div>
+    <div class="title" style="font-size:38px;margin-top:18px;max-width:560px">La amiga estilista <i>con IA</i> de la mujer latina.</div>
+    <p class="lead" style="margin-top:18px;max-width:520px">Con rostro, voz, memoria y personalidad — te conoce y cuida tu imagen todos los días.</p>
+  </div>
+  <div class="visual" style="flex:.85">
+    <div class="blob" style="width:560px;height:560px;right:-60px;bottom:-40px;background:radial-gradient(closest-side,#C8755A40,transparent)"></div>
+    <img class="fig" src="img/miga_capa.png">
+  </div>
+  <div class="brandmark">Miga · Confidencial</div><div class="pageno">27.06.2026</div>
+</div>
+
+<!-- 2 · PROBLEMA -->
+<div class="slide">
+  <div class="pane" style="flex:1.1">
+    <div class="kicker">El problema</div><hr class="rule">
+    <div class="title" style="font-size:46px;max-width:520px">Toda mujer ya se <i>trabó</i> frente al clóset.</div>
+    <p class="lead" style="margin-top:22px;max-width:500px">"No sé qué ponerme." "¿Será que este color me queda bien?" "Tengo una boda y nada que usar." Es una carga mental diaria — y cara de resolver.</p>
+  </div>
+  <div class="visual" style="flex:.9;background:var(--plum)">
+    <div class="statgrid" style="grid-template-columns:1fr">
+      <div class="statcell" style="border-bottom:1px solid #ffffff22"><div class="n" style="color:#fff">US$80<span style="font-size:40px">–360</span></div><div class="l" style="color:#F4DCE6">por sesión de consultoría de imagen presencial. Fuera del alcance de la mayoría.</div></div>
+      <div class="statcell"><div class="n" style="color:#F6C9A6">1 de 3</div><div class="l" style="color:#F4DCE6">mujeres se sienten "fuera del estándar". La imagen se vuelve ansiedad, no placer.</div></div>
+    </div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">02</div>
+</div>
+
+<!-- 3 · OPORTUNIDAD -->
+<div class="slide" style="flex-direction:column;padding:74px 72px 0">
+  <div class="kicker">La oportunidad</div>
+  <div class="title" style="font-size:46px;margin-top:14px">La demanda ya está <i>probada</i> — y en alza.</div>
+  <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-top:30px;flex:1">
+    <div class="statcell" style="padding:30px 28px 70px 0;border-right:1px solid var(--line)"><div class="n" style="color:var(--terra)">104M</div><div class="l">mujeres en Brasil (mercado de lanzamiento) — gigante B2C. Visión: Latinoamérica.</div></div>
+    <div class="statcell" style="padding:30px 28px 70px 34px;border-right:1px solid var(--line)"><div class="n" style="color:var(--plum)">Miles M</div><div class="l">de views en #coloranalysis y consultoría de imagen.</div></div>
+    <div class="statcell" style="padding:30px 28px 70px 34px;border-right:1px solid var(--line)"><div class="n" style="color:var(--sage);font-size:54px;white-space:nowrap">+20–40<span style="font-size:30px">%</span></div><div class="l">de crecimiento anual del mercado de belleza/imagen.</div></div>
+    <div class="statcell" style="padding:30px 0 70px 34px"><div class="n" style="color:var(--gold)">US$2,5<span style="font-size:38px">M</span></div><div class="l">factura al año "Lu" (avatar de marca en LatAm). El avatar funciona.</div></div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">03</div>
+</div>
+
+<!-- 4 · SOLUCIÓN -->
+<div class="slide">
+  <div class="pane" style="flex:1.15">
+    <div class="kicker">La solución</div><hr class="rule">
+    <div class="title" style="font-size:44px;max-width:540px">Miga: la <i>amiga estilista</i> en tu bolsillo.</div>
+    <ul class="ticks" style="margin-top:20px;max-width:560px">
+      <li><b>Analiza</b> tu color, tu rostro y tu cuerpo — te entrega tu paleta y tu estilo.</li>
+      <li><b>Conversa</b> con calidez y te resuelve ("boda el sábado, no sé qué ponerme").</li>
+      <li><b>Se acuerda de ti</b> para siempre — no empieza de cero como el ChatGPT.</li>
+      <li><b>Organiza tu vida de estilo</b> — es casi una agenda: cada evento ya con su look.</li>
+    </ul>
+  </div>
+  <div class="visual" style="flex:.85;background:linear-gradient(160deg,#F1DCE4,#FBF6F2)">
+    <div class="blob" style="width:520px;height:520px;right:-40px;bottom:-30px;background:radial-gradient(closest-side,#C8607A45,transparent)"></div>
+    <img class="fig" src="img/miga_sol.png">
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">04</div>
+</div>
+
+<!-- 5 · PRODUCTO -->
+<div class="slide" style="flex-direction:column;padding:64px 72px 0;align-items:center">
+  <div style="width:100%"><div class="kicker">El producto</div>
+  <div class="title" style="font-size:42px;margin-top:12px">Una experiencia <i>viva</i> — no un formulario.</div></div>
+  <div style="display:flex;gap:46px;margin-top:24px;align-items:flex-start">
+    <div style="text-align:center"><img class="tela" src="img/tela_bemvinda.png"><div class="soft" style="font-size:14px;margin-top:12px;font-family:'JetBrains Mono',monospace">te recibe por tu nombre</div></div>
+    <div style="text-align:center"><img class="tela" src="img/tela_paleta.png"><div class="soft" style="font-size:14px;margin-top:12px;font-family:'JetBrains Mono',monospace">la paleta al instante · el "wow"</div></div>
+    <div style="text-align:center"><img class="tela" src="img/tela_memoria.png"><div class="soft" style="font-size:14px;margin-top:12px;font-family:'JetBrains Mono',monospace">"yo te recuerdo" · memoria</div></div>
+    <div style="max-width:230px;align-self:center">
+      <div class="tag">Chat con la Miga</div><div class="tag">Mis Colores</div><div class="tag">Estilo & Looks</div><div class="tag">📅 Agenda</div><div class="tag">Studio</div><div class="tag">Vitrina</div>
+    </div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">05</div>
+</div>
+
+<!-- 6 · DIFERENCIAL -->
+<div class="slide" style="background:var(--plum);flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 130px">
+  <div class="kicker" style="color:#F6C9A6">El diferencial · la ventaja</div>
+  <div class="title" style="font-size:42px;color:#fff;margin:18px 0 26px">No es una "app de colorimetría". Es una <i style="color:#F6C9A6">relación</i>.</div>
+  <div class="formula">Memoria + Proactividad + Herramientas +<br>Integración con la vida + Expertise + <b>Vínculo</b></div>
+  <p class="lead" style="color:#F4DCE6;margin-top:26px;max-width:760px">Gana quien hace que la mujer <b style="color:#fff;font-weight:600">vuelva todos los días</b> — no quien le hace descubrir su estación una sola vez. Mientras más la usa, más la Miga la conoce, más difícil irse.</p>
+  <div class="brandmark" style="color:#caa9b6">Miga</div><div class="pageno" style="color:#caa9b6">06</div>
+</div>
+
+<!-- 7 · CÓMO FUNCIONA -->
+<div class="slide">
+  <div class="pane" style="flex:1.05">
+    <div class="kicker">Cómo funciona</div><hr class="rule">
+    <div class="title" style="font-size:42px;max-width:480px">Inteligente de verdad — y <i>confiable</i>.</div>
+    <ul class="ticks" style="margin-top:18px;max-width:540px">
+      <li><b>Cerebro fundamentado:</b> 14 skills con fuentes reales. Profundidad, no charla superficial.</li>
+      <li><b>No alucina:</b> los hechos salen de código exacto; la IA solo explica.</li>
+      <li><b>Corre barato:</b> uso diario en centavos; lo caro queda en el plan pago.</li>
+    </ul>
+  </div>
+  <div class="pane" style="flex:.95;background:#F3EBE4;justify-content:center">
+    <div class="kicker" style="margin-bottom:18px">El flujo · ya construido</div>
+    <div class="flowstep"><span class="n">1</span> 📸 foto → 🚪 portero valida la calidad</div>
+    <div class="flowstep"><span class="n">2</span> 👁️ visión analiza → estación y cuerpo</div>
+    <div class="flowstep"><span class="n">3</span> 🗄️ actualiza el dossier → arma el contexto</div>
+    <div class="flowstep"><span class="n">4</span> 💬 la Miga responde conociéndote</div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">07</div>
+</div>
+
+<!-- 8 · NEGOCIO -->
+<div class="slide" style="flex-direction:column;padding:74px 72px 0">
+  <div class="kicker">Modelo de negocio</div>
+  <div class="title" style="font-size:44px;margin-top:12px">Ingreso <i>recurrente</i> + comisión + B2B.</div>
+  <div style="display:flex;gap:26px;margin-top:34px">
+    <div class="card" style="flex:1"><h3 style="color:var(--terra)">1 · Suscripción</h3><p>~US$8/mes por la amiga estilista en el bolsillo. Ancla: una consultoría cuesta US$80–360.</p></div>
+    <div class="card" style="flex:1"><h3 style="color:var(--sage)">2 · Afiliados</h3><p>comisión (5–15%) en la vitrina de prendas en su color y su estilo.</p></div>
+    <div class="card" style="flex:1"><h3 style="color:var(--plum)">3 · B2B · fase 2</h3><p>widget de consultoría de imagen para tiendas y marcas.</p></div>
+  </div>
+  <p class="body" style="margin-top:30px;max-width:900px"><b style="color:var(--ink);font-weight:600">Unit economics sana:</b> el núcleo corre en centavos → cada clienta es rentable temprano. Lo que cuesta (video, imagen) es premium y medido. Conversión: hard paywall ~5× freemium · el anual retiene ~2,5×.</p>
+  <div class="brandmark">Miga</div><div class="pageno">08</div>
+</div>
+
+<!-- 9 · CRECIMIENTO -->
+<div class="slide">
+  <div class="pane" style="flex:1.1">
+    <div class="kicker">Crecimiento</div><hr class="rule">
+    <div class="title" style="font-size:44px;max-width:500px">La propia Miga es el <i>canal</i>.</div>
+    <ul class="ticks" style="margin-top:18px;max-width:540px">
+      <li><b>El avatar publica:</b> corrige un error de estilo con humor y lleva a la app.</li>
+      <li><b>Comenta → DM:</b> se vuelve clienta. Orgánico y escalable.</li>
+      <li><b>Recomendación amiga-trae-amiga:</b> el canal de mayor confianza de la mujer.</li>
+    </ul>
+  </div>
+  <div class="visual" style="flex:.6;background:var(--sage)">
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:50px">
+      <div class="num" style="font-size:120px;color:#fff">89<span style="font-size:54px">%</span></div>
+      <div style="color:#F0F3E8;font-size:18px;font-weight:300;margin-top:14px;line-height:1.5">de las mujeres confían más en la recomendación de una amiga que en la publicidad de la marca.</div>
+    </div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">09</div>
+</div>
+
+<!-- 10 · DÓNDE ESTAMOS -->
+<div class="slide" style="flex-direction:column;padding:74px 72px 0">
+  <div class="kicker">Dónde estamos</div>
+  <div class="title" style="font-size:44px;margin-top:12px">Base <i>construida</i>. Listos para encender el motor.</div>
+  <div style="display:flex;gap:30px;margin-top:32px;flex:1">
+    <div class="card" style="flex:1"><h3 style="color:var(--sage)">✓ Ya hecho</h3>
+      <ul class="ticks" style="margin-top:6px"><li>Marca, identidad y avatar</li><li>Cerebro: 14 skills fundamentadas</li><li>Motor probado + prototipo en vivo</li><li>Arquitectura, stack y estrategia (9 estudios)</li></ul></div>
+    <div class="card" style="flex:1"><h3 style="color:var(--terra)">Próximas olas</h3>
+      <ul class="ticks" style="margin-top:6px"><li>Encender los modelos de IA (1ª prueba viva)</li><li>La paleta de punta a punta → el chat</li><li>Piloto pago → validar retención</li><li>Studio · agenda · vitrina</li></ul></div>
+  </div>
+  <div class="brandmark">Miga</div><div class="pageno">10</div>
+</div>
+
+<!-- 11 · CIERRE -->
+<div class="slide" style="background:linear-gradient(115deg,#F1DCE4 0%,#FBF6F2 55%)">
+  <div class="pane" style="flex:1.15">
+    <div class="kicker">La visión</div><hr class="rule">
+    <div class="hero" style="font-size:52px;max-width:600px">Toda mujer merece una <i>amiga</i> que entienda de estilo.</div>
+    <p class="lead" style="margin-top:24px;max-width:520px">La Miga vuelve la consultoría de imagen — antes cara y elitista — íntima, diaria y accesible.</p>
+    <p style="margin-top:26px;font-family:'Playfair Display',serif;font-style:italic;font-size:26px;color:var(--terra)">Vamos a vestir a Latinoamérica de autoconfianza.</p>
+  </div>
+  <div class="visual" style="flex:.85">
+    <div class="blob" style="width:540px;height:540px;right:-50px;bottom:-30px;background:radial-gradient(closest-side,#C8607A45,transparent)"></div>
+    <img class="fig" src="img/miga_fecho.png">
+  </div>
+  <div class="brandmark">Miga Consultora · GO!GO!</div><div class="pageno">11</div>
+</div>
+
+<style>
+@media screen{ html{background:#15110f} body{width:1280px;margin:0 auto;padding:18px 0} .slide{margin:0 auto 20px;box-shadow:0 18px 55px rgba(0,0,0,.45)} }
+</style>
+<script>
+function fitDeck(){ if(window.matchMedia&&window.matchMedia('print').matches){document.documentElement.style.zoom='';return;} document.documentElement.style.zoom=Math.min(1,window.innerWidth/1280); }
+addEventListener('resize',fitDeck); addEventListener('load',fitDeck); fitDeck();
+</script>
+</body></html>
